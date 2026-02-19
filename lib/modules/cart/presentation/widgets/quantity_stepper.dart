@@ -14,18 +14,20 @@ class QuantityStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(48),
-      onTap: onPressed,
-      child: Container(
-        width: 28,
-        height: 28,
+    return IconButton(
+      constraints: BoxConstraints(
+        maxHeight: 28,
+        maxWidth: 28,
+      ),
+      padding: EdgeInsets.zero,
+      onPressed: onPressed,
+      icon: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: AppColors.primaryBlue),
         ),
-        child: Icon(icon),
+        child: Icon(icon, size: 16),
       ),
     );
   }

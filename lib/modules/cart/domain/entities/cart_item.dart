@@ -29,16 +29,19 @@ class CartItem {
 
   factory CartItem.empty() {
     return CartItem(
-      product: ProductItem(id: 0, title: "NA", price: 0, image: "NA"),
+      product: ProductItem(
+        id: 0,
+        title: "NA",
+        price: 0,
+        image: "NA",
+        category: "NA",
+      ),
       quantity: 0,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'product': product.toMap(),
-      'quantity': quantity,
-    };
+    return {'product': product.toMap(), 'quantity': quantity};
   }
 
   factory CartItem.fromMap(Map<String, dynamic> map) {

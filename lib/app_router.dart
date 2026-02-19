@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_project_pwa/config/constants/route_constants.dart';
 
 import 'package:mini_project_pwa/config/environment_config.dart';
-
 import 'package:mini_project_pwa/core/di/injection_container.dart';
 import 'package:mini_project_pwa/core/services/analytics/analytics_observer.dart';
 import 'package:mini_project_pwa/modules/auth/presentation/screens/login_page.dart';
@@ -44,9 +43,7 @@ class AppRouter {
           final productId = state.uri.queryParameters['productId'];
           return MultiBlocProvider(
             providers: [
-              BlocProvider(
-                create: (_) => getIt<HomeBloc>()..add(LoadProducts()),
-              ),
+              BlocProvider(create: (_) => getIt<HomeBloc>()..add(LoadProducts())),
               BlocProvider.value(value: context.read<CartBloc>()),
             ],
             child: CartPage(productId: productId),

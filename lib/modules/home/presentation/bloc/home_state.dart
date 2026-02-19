@@ -24,7 +24,7 @@ class ProductLoaded extends HomeState {
   List<Object> get props => [products];
 }
 
-/// Loading state for any product list api error
+/// Error state for any product list api error
 class ProductError extends HomeState {
   final String message;
 

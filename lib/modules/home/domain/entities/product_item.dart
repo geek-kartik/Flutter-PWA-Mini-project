@@ -13,6 +13,9 @@ class ProductItem {
   /// Price of the product.
   final double price;
 
+  /// Category of the product.
+  final String category;
+
   /// Image of the product.
   final String image;
 
@@ -22,23 +25,37 @@ class ProductItem {
     required this.title,
     required this.price,
     required this.image,
+    required this.category,
   });
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'title': title, 'price': price, 'image': image};
+    return {
+      'id': id,
+      'title': title,
+      'price': price,
+      'image': image,
+      'category': category,
+    };
   }
 
   factory ProductItem.fromMap(Map<String, dynamic> map) {
     return ProductItem(
       id: map['id'],
-      title: map['title'] ?? 1,
-      price: map['price'] ?? 1,
-      image: map['image'] ?? 1,
+      title: map['title'] ?? "",
+      price: map['price'] ?? "",
+      image: map['image'] ?? "",
+      category: map['category'] ?? "",
     );
   }
 
   factory ProductItem.empty() {
-    return ProductItem(id: 0, title: "NA", price: 0, image: "NA");
+    return ProductItem(
+      id: 0,
+      title: "NA",
+      price: 0,
+      image: "NA",
+      category: "NA",
+    );
   }
 
   @override
@@ -49,9 +66,14 @@ class ProductItem {
           id == other.id &&
           title == other.title &&
           price == other.price &&
-          image == other.image;
+          image == other.image &&
+          category == other.category;
 
   @override
   int get hashCode =>
-      id.hashCode ^ title.hashCode ^ price.hashCode ^ image.hashCode;
+      id.hashCode ^
+      title.hashCode ^
+      price.hashCode ^
+      image.hashCode ^
+      category.hashCode;
 }

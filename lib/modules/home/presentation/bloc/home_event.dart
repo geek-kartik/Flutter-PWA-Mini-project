@@ -1,6 +1,7 @@
 library;
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:mini_project_pwa/modules/home/domain/entities/product_item.dart';
 
 /// Events for the home feature.
@@ -47,4 +48,20 @@ class RemoveFromCart extends CartEvent {
 }
 
 class ClearCart extends CartEvent {}
+
+class SearchQueryChanged extends HomeEvent {
+  final String query;
+
+  const SearchQueryChanged(this.query);
+}
+
+class FilterChanged extends HomeEvent {
+  final String? category;
+  final RangeValues? priceRange;
+
+  FilterChanged({
+    this.category,
+    this.priceRange,
+  });
+}
 

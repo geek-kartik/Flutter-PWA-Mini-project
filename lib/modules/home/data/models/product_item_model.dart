@@ -16,12 +16,16 @@ class ProductItemModel {
 
   final String image;
 
+  /// Category product
+  final String category;
+
   /// Create a [ProductItemModel].
   const ProductItemModel({
     required this.id,
     required this.title,
     required this.price,
     required this.image,
+    required this.category,
   });
 
   /// Create model from JSON map.
@@ -30,7 +34,8 @@ class ProductItemModel {
       id: json['id'] as int,
       title: json['title'] as String,
       price: json['price'],
-      image: json['image']
+      image: json['image'],
+      category: json['category'],
     );
   }
 
@@ -41,6 +46,7 @@ class ProductItemModel {
       title: title,
       price: price,
       image: image,
+      category: category,
     );
   }
 
@@ -51,6 +57,7 @@ class ProductItemModel {
       title: entity.title,
       price: entity.price,
       image: entity.image,
+      category: entity.category,
     );
   }
 }

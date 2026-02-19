@@ -18,7 +18,7 @@ class CartIconWidget extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.shopping_cart),
               onPressed: () {
-                AppNavigator.go(context, RouteConstants.cart);
+                AppNavigator.push(context, RouteConstants.cart);
               },
             ),
             if (state.totalItems > 0)

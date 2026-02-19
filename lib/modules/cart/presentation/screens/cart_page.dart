@@ -29,6 +29,7 @@ class _CartPageState extends State<CartPage> {
   final socketService = PaymentSocketService();
 
   late RazorpayWeb _razorpay;
+  bool _showProgressBar = false;
 
   String? invoiceUrl;
 
@@ -120,6 +121,12 @@ class _CartPageState extends State<CartPage> {
         listener: (context, state) {
           if (widget.productId == null) return;
 
+          if (state is ProductLoading) {
+            setState(() {
+              _showProgressBar = true;
+            });
+          }
+
           final cartBloc = context.read<CartBloc>();
           if (state is ProductLoaded) {
             final product = state.products.firstWhere(
@@ -128,10 +135,18 @@ class _CartPageState extends State<CartPage> {
             );
 
             cartBloc.add(AddToCart(product));
+
+            setState(() {
+              _showProgressBar = false;
+            });
           }
         },
         child: BlocBuilder<CartBloc, CartState>(
           builder: (context, cartState) {
+            if (_showProgressBar) {
+              return Center(child: CircularProgressIndicator());
+            }
+
             if (cartState.items.isEmpty) {
               return const Center(child: Text("Cart is empty"));
             }
