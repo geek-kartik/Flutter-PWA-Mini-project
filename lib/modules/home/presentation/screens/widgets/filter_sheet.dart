@@ -76,7 +76,7 @@ class _FilterSheetState extends State<_FilterSheet> {
                   _selectedCategory = null;
                   _priceRange = RangeValues(0, 1000);
                   widget.onApply(_selectedCategory, null);
-                  AppNavigator.pop(context);
+                  if (context.mounted) AppNavigator.pop(context);
                 },
                 child: const Text(
                   "Reset",
@@ -135,7 +135,7 @@ class _FilterSheetState extends State<_FilterSheet> {
                 onPressed: () {
                   /// Receive callback on apply filters
                   widget.onApply(_selectedCategory, _priceRange);
-                  AppNavigator.pop(context);
+                  if (context.mounted) AppNavigator.pop(context);
                 },
                 child: const Text(
                   "Apply",

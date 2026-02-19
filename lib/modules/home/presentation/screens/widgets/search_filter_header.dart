@@ -22,8 +22,9 @@ class _SearchFilterHeaderState extends State<_SearchFilterHeader> {
                 padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
                 child: TextField(
                   controller: homeBloc.searchTextController,
+                  textInputAction: TextInputAction.search,
                   onChanged: (value) {
-                    homeBloc.add(SearchQueryChanged(value));
+                    homeBloc.add(SearchQueryChanged());
                   },
                   decoration: InputDecoration(
                     hintText: "Search",

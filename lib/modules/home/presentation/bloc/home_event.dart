@@ -50,18 +50,12 @@ class RemoveFromCart extends CartEvent {
 class ClearCart extends CartEvent {}
 
 class SearchQueryChanged extends HomeEvent {
-  final String query;
-
-  const SearchQueryChanged(this.query);
+  const SearchQueryChanged();
 }
 
 class FilterChanged extends HomeEvent {
   final String? category;
   final RangeValues? priceRange;
 
-  FilterChanged({
-    this.category,
-    this.priceRange,
-  });
+  FilterChanged({this.category, this.priceRange});
 }
-
