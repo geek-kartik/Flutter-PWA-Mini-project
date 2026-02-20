@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <!--
       If you are serving your web app in a path other than the root, change the
@@ -35,6 +35,48 @@
     <script id="rzp-jssdk" src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 
     <script src="https://unpkg.com/@flutter-web-plugins/webview_flutter_web"></script>
+
+    <script>
+        (async function () {
+          try {
+            const params = new URLSearchParams(window.location.search);
+            const mobile =
+              params.get("mobile") ||
+              localStorage.getItem("mobile");
+
+            // If no mobile → redirect
+            if (!mobile) {
+              window.location.replace("https://geekyants.com");
+              return;
+            }
+
+            const response = await fetch(
+              "https://www.bajajfinservsecurities.in/api/portals/Scrip/clients/exists",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mobile })
+              }
+            );
+
+            const data = await response.json();
+
+            // Verify type of the user
+            // 0 = new user, 1 = existing user
+            if (data?.data?.flag === "0") {
+              window.location.replace("https://geekyants.com");
+              return;
+            }
+
+            // Otherwise load app
+            window.__USER_ALLOWED__ = true;
+
+          } catch (e) {
+            console.error("Pre-check failed", e);
+            window.location.replace("http://localhost:5555");
+          }a
+        })();
+    </script>
 </head>
 <body>
 <!--

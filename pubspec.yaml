@@ -95,9 +95,6 @@ dev_dependencies:
 flutter:
 #  plugin:
 #    platforms:
-#        web:
-#            pluginClass: RazorpayFlutterPlugin
-#            fileName: core/payment/razorpay_flutter_web.dart
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
