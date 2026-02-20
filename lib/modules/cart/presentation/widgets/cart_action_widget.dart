@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_project_pwa/modules/cart/domain/entities/cart_item.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_bloc.dart';
+import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_event.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/widgets/quantity_stepper.dart';
 import 'package:mini_project_pwa/modules/home/domain/entities/product_item.dart';
-import 'package:mini_project_pwa/modules/home/presentation/bloc/home_event.dart';
 
 /// This is common widget represents quantity of product in cart
 class CartActionWidget extends StatelessWidget {

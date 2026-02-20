@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_project_pwa/modules/cart/domain/entities/cart_item.dart';
+import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_event.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_state.dart';
-import 'package:mini_project_pwa/modules/home/presentation/bloc/home_event.dart';
 
 /// BLoC for the cart feature.
 ///
@@ -42,7 +42,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           quantity: existingItem.quantity - 1,
         );
       } else {
-        updated.remove(CartItem(product: event.product, quantity: 1));
+        updated.removeAt(existingIndex);
       }
 
       emit(CartState(items: updated));
@@ -51,17 +51,5 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<ClearCart>((event, emit) {
       emit(const CartState());
     });
-  }
-
-  @override
-  CartState? fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
-  }
-
-  @override
-  Map<String, dynamic>? toJson(CartState state) {
-    // TODO: implement toJson
-    throw UnimplementedError();
   }
 }

@@ -22,33 +22,6 @@ class LoadProducts extends HomeEvent {
   const LoadProducts();
 }
 
-abstract class CartEvent extends Equatable {
-  const CartEvent();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class AddToCart extends CartEvent {
-  final ProductItem product;
-
-  const AddToCart(this.product);
-
-  @override
-  List<Object?> get props => [product];
-}
-
-class RemoveFromCart extends CartEvent {
-  final ProductItem product;
-
-  const RemoveFromCart(this.product);
-
-  @override
-  List<Object?> get props => [product];
-}
-
-class ClearCart extends CartEvent {}
-
 class SearchQueryChanged extends HomeEvent {
   const SearchQueryChanged();
 }
