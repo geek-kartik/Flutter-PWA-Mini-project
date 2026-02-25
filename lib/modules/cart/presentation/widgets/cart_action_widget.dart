@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mini_project_pwa/core/services/analytics/clever_tap_events.dart';
+import 'package:mini_project_pwa/core/services/analytics/clever_tap_service.dart';
 import 'package:mini_project_pwa/modules/cart/domain/entities/cart_item.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_bloc.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_event.dart';
@@ -33,6 +35,15 @@ class CartActionWidget extends StatelessWidget {
         height: 28,
         child: OutlinedButton(
           onPressed: () {
+            CleverTapService.track(
+              CTEvents.addToCart,
+              props: {
+                "product_id": product.id,
+                "category": product.category,
+                "price": product.price,
+              },
+            );
+
             cartBloc.add(AddToCart(product));
           },
           child: const Text("ADD"),

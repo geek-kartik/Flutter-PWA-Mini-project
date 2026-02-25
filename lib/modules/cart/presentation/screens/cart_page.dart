@@ -183,7 +183,7 @@ class _CartPageState extends State<CartPage> {
                     color: Colors.grey[300],
                   ),
                   child: Row(
-                    mainAxisAlignment: .spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Total: \$${cartState.totalAmount.toStringAsFixed(2)}",

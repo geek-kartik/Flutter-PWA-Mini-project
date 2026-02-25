@@ -26,7 +26,7 @@ void showInvoiceDialog({
               Navigator.pop(context);
               PdfDownloadHelper.downloadProtectedPdf(
                 url: invoiceUrl,
-                title: .invoice,
+                title: PdfHelperTitle.invoice,
               );
             },
             child: const Text(

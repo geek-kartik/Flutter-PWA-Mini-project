@@ -5,6 +5,8 @@ import 'package:mini_project_pwa/config/app_navigator.dart';
 import 'package:mini_project_pwa/config/constants/app_constants.dart';
 import 'package:mini_project_pwa/config/theme/app_colors.dart';
 import 'package:mini_project_pwa/core/errors/error_handler.dart';
+import 'package:mini_project_pwa/core/services/analytics/moengage_events.dart';
+import 'package:mini_project_pwa/core/services/analytics/monegage_service.dart';
 import 'package:mini_project_pwa/core/widgets/common_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../config/constants/route_constants.dart';
@@ -28,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _acceptedTerms = false;
+  final MoeService _moeService = MoeService();
 
   @override
   void dispose() {
@@ -45,6 +48,12 @@ class _LoginPageState extends State<LoginPage> {
     if (!(_formKey.currentState?.validate() ?? false)) {
       return;
     }
+
+    /// Use [MoeService and MoEEvents] to trigger events
+    _moeService.track(MoEEvents.login, props: {
+      "screen_page": "login_page",
+      "context": "login_tap",
+    });
 
     AppNavigator.go(context, RouteConstants.home);
   }

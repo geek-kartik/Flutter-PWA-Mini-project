@@ -7,6 +7,8 @@ import 'package:mini_project_pwa/app.dart';
 import 'package:mini_project_pwa/config/environment_config.dart';
 import 'package:mini_project_pwa/config/theme/theme_provider.dart';
 import 'package:mini_project_pwa/core/di/injection_container.dart';
+import 'package:mini_project_pwa/core/services/analytics/clever_tap_service.dart';
+import 'package:mini_project_pwa/core/services/analytics/monegage_service.dart';
 import 'package:mini_project_pwa/modules/auth/presentation/bloc/auth_bloc.dart';
 import 'package:mini_project_pwa/modules/cart/presentation/bloc/cart_bloc.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +38,8 @@ Future<void> main() async {
     await Firebase.initializeApp();
   }
   await initDependencies();
+  await MoeService().init();
+  await CleverTapService.init(accountId: 'XXXXXX'); // replace with actual clever tap acc id
 
   runApp(
     MultiBlocProvider(
